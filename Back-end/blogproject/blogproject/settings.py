@@ -59,7 +59,7 @@ ROOT_URLCONF = 'blogproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,10 +121,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS=[
-#     os.path.join(BASE_DIR,'build/static')
-# ]
-# STATIC_ROOT= os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'build/static')
+]
+STATIC_ROOT= os.path.join(BASE_DIR,'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -142,3 +142,8 @@ REST_FRAMEWORK = {
 SUMMERNOTE_THEME = 'bs4' 
 
 CORS_ALLOW_ALL_ORIGINS= True
+
+SUMMERNOTE_CONFIG = {
+    
+    'attachment_filesize_limit': 8640*6480, # specify the file size
+}
